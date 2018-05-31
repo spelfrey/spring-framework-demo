@@ -10,7 +10,3 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 }
-
-    git config --global user.email "spelfrey@outlook.com"
-
-        git config --global user.name "Stephen Pelfrey"
