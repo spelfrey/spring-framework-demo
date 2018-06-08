@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MailController {
 
-    @Autowired
     private MailSender mailSender;
+
+    @Autowired
+    public MailController(MailSender smtp) {
+        this.mailSender = smtp;
+    }
 
     @RequestMapping("/mail")
     public String hello() {
