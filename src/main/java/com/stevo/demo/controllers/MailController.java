@@ -18,7 +18,7 @@ public class MailController {
     }
 
     @RequestMapping("/mail")
-    public String hello() {
+    public String mail() {
 
         mailSender.send("mail@example.com", "Test mail", "Body of the mail");
 
