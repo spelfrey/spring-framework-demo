@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.MessagingException;
+
 @RestController
 public class MailController {
 
@@ -16,7 +18,7 @@ public class MailController {
     }
 
     @RequestMapping("/mail")
-    public String mail() {
+    public String mail() throws MessagingException {
 
         mailSender.send("mail@example.com", "Test mail", "Body of the mail");
 
