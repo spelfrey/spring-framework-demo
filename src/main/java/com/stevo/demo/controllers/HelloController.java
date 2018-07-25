@@ -1,13 +1,16 @@
 package com.stevo.demo.controllers;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HelloController {
 
     @RequestMapping("/hello")
-    public String hello() {
-        return "Hello, World";
+    public String hello(Model model) {
+        model.addAttribute("name", "Stephen");
+        return "hello";
     }
 }
