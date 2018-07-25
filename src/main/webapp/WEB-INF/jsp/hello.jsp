@@ -7,5 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="includes/header.jsp" %>
-Hello, ${name}!
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<spring:message code="hello"/>, ${name}!
 <%@include file="includes/footer.jsp" %>
