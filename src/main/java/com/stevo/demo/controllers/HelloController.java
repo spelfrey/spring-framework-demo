@@ -26,8 +26,8 @@ public class HelloController {
 
     @RequestMapping("/hello/{id}")
     public String helloId(Model model,
-            @PathVariable("id") int id,
-            @RequestParam("name") String name) {
+                          @PathVariable("id") int id,
+                          @RequestParam("name") String name) {
 
         model.addAttribute("id", id);
         model.addAttribute("name", name);

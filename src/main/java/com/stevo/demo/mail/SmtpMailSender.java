@@ -28,7 +28,7 @@ public class SmtpMailSender implements MailSender {
 
         helper.setSubject(subject);
         helper.setTo(to);
-        helper.setText(body,true);
+        helper.setText(body, true);
 
         javaMailSender.send(message);
 
