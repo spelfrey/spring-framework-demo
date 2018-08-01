@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <title>Spring Framework Tutorial</title>
-    <link rel="stylesheet" href="/js/lib/bootstrap-4.1.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap-4.1.1-dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
@@ -26,7 +26,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="/signup">Signup</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
