@@ -1,32 +1,34 @@
 package com.stevo.demo.controllers;
 
+import com.stevo.demo.commands.UserCommand;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
-@RequestMapping(value = "/signup")
-public class SignupController {
+@Controller @RequestMapping(value = "/signup") public class SignupController {
 
     private static Log log = LogFactory.getLog(SignupController.class);
 
-    @GetMapping
-    public String signup() {
+    @GetMapping public String signup() {
 
         log.info("GET SIGNUP");
         return "signup";
     }
 
-    @PostMapping
-    public String doSignup(@RequestParam("email") String email,
-                           @RequestParam("name") String name,
-                           @RequestParam("password") String password) {
+    @PostMapping public String doSignup(@Validated UserCommand userCommand, BindingResult result) {
 
-        log.info("email: " + email + "; Name: " + name + "; Password: " + password);
+        if(result.hasErrors()) {
+            log.info("Validation failed");
+            return "signup";
+        }
+
+        log.info("email: " + userCommand.getEmail() + "; Name: " + userCommand.getName() + "; Password: " +
+                userCommand.getPassword());
         return "redirect:/";
     }
 }
