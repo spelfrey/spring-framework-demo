@@ -6,8 +6,8 @@ import javax.validation.constraints.Size;
 
 public class UserCommand {
 
-    @NotBlank @Email @Size(min = 4, max = 255) private String email;
-    @NotBlank @Size(min = 1, max = 100) private String name;
+    @NotBlank(message = "{blankEmail}") @Email @Size(min = 4, max = 255, message = "{emailSizeErrors}") private String email;
+    @NotBlank @Size(min = 1, max = 100, message = "{nameSizeErrors}") private String name;
     @NotBlank @Size(min = 6, max = 32) private String password;
 
     public String getEmail() {

@@ -10,6 +10,7 @@
 <head>
     <title>Spring Framework Tutorial</title>
     <link rel="stylesheet" href="/lib/bootstrap-4.1.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div class="container">
