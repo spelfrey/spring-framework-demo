@@ -6,31 +6,40 @@ import javax.validation.constraints.Size;
 
 public class UserCommand {
 
-    @NotBlank(message = "{blankEmail}") @Email @Size(min = 4, max = 255, message = "{emailSizeErrors}") private String email;
-    @NotBlank @Size(min = 1, max = 100, message = "{nameSizeErrors}") private String name;
-    @NotBlank @Size(min = 6, max = 32) private String password;
+  @NotBlank(message = "{blankEmail}")
+  @Email
+  @Size(min = 4, max = 255, message = "{emailSizeErrors}")
+  private String email;
 
-    public String getEmail() {
-        return email;
-    }
+  @NotBlank
+  @Size(min = 1, max = 100, message = "{nameSizeErrors}")
+  private String name;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  @NotBlank
+  @Size(min = 6, max = 32)
+  private String password;
 
-    public String getName() {
-        return name;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 }

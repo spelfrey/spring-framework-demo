@@ -11,27 +11,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HelloController {
 
-    @RequestMapping("/hello")
-    public String hello(Model model) {
+  @RequestMapping("/hello")
+  public String hello(Model model) {
 
-        Object[] urls = {
-                "http://below18.example.com",
-                "http://above18.example.com"
-        };
+    Object[] urls = {"http://below18.example.com", "http://above18.example.com"};
 
-        model.addAttribute("name", MyUtils.getMessage("text", "http://below18.example.com",
-                "http://above18.example.com", LocaleContextHolder.getLocale()));
-        return "hello";
-    }
+    model.addAttribute(
+        "name",
+        MyUtils.getMessage(
+            "text",
+            "http://below18.example.com",
+            "http://above18.example.com",
+            LocaleContextHolder.getLocale()));
+    return "hello";
+  }
 
-    @RequestMapping("/hello/{id}")
-    public String helloId(Model model,
-                          @PathVariable("id") int id,
-                          @RequestParam("name") String name) {
+  @RequestMapping("/hello/{id}")
+  public String helloId(
+      Model model, @PathVariable("id") int id, @RequestParam("name") String name) {
 
-        model.addAttribute("id", id);
-        model.addAttribute("name", name);
+    model.addAttribute("id", id);
+    model.addAttribute("name", name);
 
-        return "hello-id";
-    }
+    return "hello-id";
+  }
 }

@@ -10,18 +10,18 @@ import javax.mail.MessagingException;
 @RestController
 public class MailController {
 
-    private MailSender mailSender;
+  private MailSender mailSender;
 
-    @Autowired
-    public MailController(MailSender smtp) {
-        this.mailSender = smtp;
-    }
+  @Autowired
+  public MailController(MailSender smtp) {
+    this.mailSender = smtp;
+  }
 
-    @RequestMapping("/mail")
-    public String mail() throws MessagingException {
+  @RequestMapping("/mail")
+  public String mail() throws MessagingException {
 
-        mailSender.send("mail@example.com", "Test mail", "Body of the mail");
+    mailSender.send("mail@example.com", "Test mail", "Body of the mail");
 
-        return "Mail  sent";
-    }
+    return "Mail  sent";
+  }
 }
