@@ -1,5 +1,7 @@
 package com.stevo.demo.service;
 
+import static com.stevo.demo.domain.User.Role.UNVERIFIED;
+
 import com.stevo.demo.commands.UserCommand;
 import com.stevo.demo.domain.User;
 import com.stevo.demo.repositories.UserRepository;
@@ -20,6 +22,7 @@ public class UserServiceImpl implements UserService {
     user.setEmail(userCommand.getEmail());
     user.setName(userCommand.getName());
     user.setPassword(userCommand.getPassword());
+    user.getRoles().add(UNVERIFIED);
     userRepository.save(user);
   }
 }
