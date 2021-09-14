@@ -7,12 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usr")
+@Table(name = "usr")
 public class User {
 
-  @Id
-  @GeneratedValue
-  private Long id;
+  @Id @GeneratedValue private Long id;
 
   @Column(nullable = false, length = 250)
   private String email;

@@ -11,26 +11,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller @RequestMapping(value = "/signup") public class SignupController {
+@Controller
+@RequestMapping(value = "/signup")
+public class SignupController {
 
-    private static Log log = LogFactory.getLog(SignupController.class);
+  private static Log log = LogFactory.getLog(SignupController.class);
 
-    @GetMapping public String signup(Model model) {
+  @GetMapping
+  public String signup(Model model) {
 
-        model.addAttribute("userCommand", new UserCommand());
-        log.info("GET SIGNUP");
-        return "signup";
+    model.addAttribute("userCommand", new UserCommand());
+    log.info("GET SIGNUP");
+    return "signup";
+  }
+
+  @PostMapping
+  public String doSignup(@Validated UserCommand userCommand, BindingResult result) {
+
+    if (result.hasErrors()) {
+      log.info("Validation failed");
+      return "signup";
     }
 
-    @PostMapping public String doSignup(@Validated UserCommand userCommand, BindingResult result) {
-
-        if (result.hasErrors()) {
-            log.info("Validation failed");
-            return "signup";
-        }
-
-        log.info("email: " + userCommand.getEmail() + "; Name: " + userCommand.getName() + "; Password: " +
-                userCommand.getPassword());
-        return "redirect:/";
-    }
+    log.info(
+        "email: "
+            + userCommand.getEmail()
+            + "; Name: "
+            + userCommand.getName()
+            + "; Password: "
+            + userCommand.getPassword());
+    return "redirect:/";
+  }
 }

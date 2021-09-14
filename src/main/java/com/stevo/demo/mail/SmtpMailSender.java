@@ -10,30 +10,30 @@ import javax.mail.internet.MimeMessage;
 
 public class SmtpMailSender implements MailSender {
 
-    private static Log log = LogFactory.getLog(SmtpMailSender.class);
+  private static Log log = LogFactory.getLog(SmtpMailSender.class);
 
-    private JavaMailSender javaMailSender;
+  private JavaMailSender javaMailSender;
 
-    public SmtpMailSender(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
+  public SmtpMailSender(JavaMailSender javaMailSender) {
+    this.javaMailSender = javaMailSender;
+  }
 
-    @Override
-    public void send(String to, String subject, String body) throws MessagingException {
+  @Override
+  public void send(String to, String subject, String body) throws MessagingException {
 
-        MimeMessage message = javaMailSender.createMimeMessage();
-        MimeMessageHelper helper;
+    MimeMessage message = javaMailSender.createMimeMessage();
+    MimeMessageHelper helper;
 
-        helper = new MimeMessageHelper(message, true);
+    helper = new MimeMessageHelper(message, true);
 
-        helper.setSubject(subject);
-        helper.setTo(to);
-        helper.setText(body, true);
+    helper.setSubject(subject);
+    helper.setTo(to);
+    helper.setText(body, true);
 
-        javaMailSender.send(message);
+    javaMailSender.send(message);
 
-        log.info("Sending SMTP mail to " + to);
-        log.info("with subject " + subject);
-        log.info("and body " + body);
-    }
+    log.info("Sending SMTP mail to " + to);
+    log.info("with subject " + subject);
+    log.info("and body " + body);
+  }
 }
