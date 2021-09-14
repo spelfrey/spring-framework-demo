@@ -1,0 +1,9 @@
+services:
+  postgres-9.6.6:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=stevo_demo
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
