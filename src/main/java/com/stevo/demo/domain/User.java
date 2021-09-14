@@ -5,6 +5,7 @@ import java.util.HashSet;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,7 @@ public class User {
   private String password;
 
   @ElementCollection(fetch = FetchType.EAGER)
-  @Enumerated()
+  @Enumerated(EnumType.STRING)
   private Collection<Role> roles = new HashSet<Role>();
 
   public Long getId() {
