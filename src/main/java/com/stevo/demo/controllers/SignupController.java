@@ -1,6 +1,7 @@
 package com.stevo.demo.controllers;
 
 import com.stevo.demo.commands.UserCommand;
+import com.stevo.demo.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SignupController {
 
   private static Log log = LogFactory.getLog(SignupController.class);
+
+  private UserService userService;
+
+  public SignupController(UserService userService) {
+    this.userService = userService;
+  }
 
   @GetMapping
   public String signup(Model model) {
@@ -33,6 +40,7 @@ public class SignupController {
       return "signup";
     }
 
+    userService.signup(userCommand);
     log.info(
         "email: "
             + userCommand.getEmail()
