@@ -1,5 +1,6 @@
 package com.stevo.demo.commands;
 
+import com.stevo.demo.validation.UniqueEmail;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -9,6 +10,7 @@ public class UserCommand {
   @NotBlank(message = "{blankEmail}")
   @Email
   @Size(min = 4, max = 255, message = "{emailSizeErrors}")
+  @UniqueEmail
   private String email;
 
   @NotBlank
