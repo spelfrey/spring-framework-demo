@@ -2,6 +2,7 @@ package com.stevo.demo.controllers;
 
 import com.stevo.demo.commands.UserCommand;
 import com.stevo.demo.service.UserService;
+import com.stevo.demo.utils.MyUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/signup")
@@ -33,7 +35,10 @@ public class SignupController {
   }
 
   @PostMapping
-  public String doSignup(@Validated UserCommand userCommand, BindingResult result) {
+  public String doSignup(
+      @Validated UserCommand userCommand,
+      BindingResult result,
+      RedirectAttributes redirectAttributes) {
 
     if (result.hasErrors()) {
       log.info("Validation failed");
@@ -41,6 +46,9 @@ public class SignupController {
     }
 
     userService.signup(userCommand);
+    MyUtils.flash(redirectAttributes, "success", "signupSucess");
+//    redirectAttributes.addFlashAttribute("flashMessage", "Signup Succeeded");
+//    redirectAttributes.addFlashAttribute("flashKind", "success");
     log.info(
         "email: "
             + userCommand.getEmail()
