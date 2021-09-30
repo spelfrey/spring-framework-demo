@@ -6,6 +6,7 @@ import com.stevo.demo.commands.UserCommand;
 import com.stevo.demo.domain.User;
 import com.stevo.demo.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -17,6 +18,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  @Transactional
   public void signup(UserCommand userCommand) {
     User user = new User();
     user.setEmail(userCommand.getEmail());
